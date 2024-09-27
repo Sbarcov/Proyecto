@@ -19,7 +19,7 @@
         <div class="card">
             <h4 class="card-header">Registrarse</h4>
             <div class="card-body">
-                <form action="./index.html" method="post">
+                <form id="registerForm" action="./index.html" method="post"> 
                     <div class="mb-3">
                         <input type="text" name="Nombre" placeholder="nombre" class="form-control" required>
                     </div>
@@ -40,8 +40,8 @@
                             <input type="submit" value="Registrarse" class="btn btn-primary">
                         </div>
                         <div class="mb-3 p-3">
-                            <input type="submit" value="Regresar" class="btn btn-secondary"
-                                formaction="login.html" formnovalidate>
+                            <input type="button" id="btnLogin" value="Regresar" class="btn btn-secondary"
+                                formaction="./login.html" formnovalidate>
                         </div>
                     </div>
 
@@ -49,6 +49,8 @@
             </div>
         </div>
     </div>
+
+    <script src="js/register.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
