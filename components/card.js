@@ -1,5 +1,3 @@
-const url = 'http://127.0.0.1:5500/'
-
 export const cardComponent = (img, title, desc, price) => {
     return `
     <div class="col">
