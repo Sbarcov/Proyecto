@@ -2,7 +2,8 @@ import { navbarComp } from "../components/navbar.js";
 import { cardComponent } from "../components/card.js";
 import { data} from "../data/cardData.js";
 
-let navContainer = document.querySelector('header')
+let navContainer = document.querySelector('header') // Se anexo el navbar a este script
+
 let cardContainer = document.getElementById('cardElement')
 let containerId = document.getElementsByClassName('container-sm')[0].id
 
