@@ -7,6 +7,23 @@ let navContainer = document.querySelector('header') // Se anexo el navbar a este
 let cardContainer = document.getElementById('cardElement')
 let containerId = document.getElementsByClassName('container-sm')[0].id
 
+const getUserData = (key) => {
+    return JSON.parse(sessionStorage.getItem(key));
+}
+
+window.addEventListener('load', ()=>{
+
+    const userInfo = getUserData('userData');
+
+    if (userInfo){
+        navContainer.innerHTML = navbarComp;
+    }
+    else
+    {
+        window.location.href = './login.html';
+    }
+})
+
 window.addEventListener('load', () => {
     navContainer.innerHTML = navbarComp
 })
