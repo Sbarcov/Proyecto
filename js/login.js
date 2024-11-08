@@ -1,5 +1,6 @@
 window.addEventListener('load', ()=>{
     sessionStorage.removeItem('userData');
+//    localStorage.clear();
 })
 
 document.getElementById('btnRegistro').addEventListener('click', function() {

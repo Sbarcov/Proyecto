@@ -3,14 +3,7 @@
         "nombre": "Sebastian",
         "apellido": "Barcovsci",
         "email": "A@B.hotmail.com",
-        "password": "pass123",
+        "password": "1",
         "edad": 29
-    },
-    {
-        "nombre": "Test",
-        "apellido": "User",
-        "email": "user.example.com",
-        "password": "1234",
-        "edad": 30
     }
 ]

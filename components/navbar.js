@@ -7,7 +7,7 @@ const navElementsLeft = [
 ]
 
 const navElementsRigth = [
-    {class: 'navbar-brand', title: 'Carro de compras', link: `#`},
+    {class: 'navbar-brand', title: 'Carro de compras', link: `${url}carrito.html`},
     {class: 'nav-link', title: 'Log Out', link: `${url}login.html`}
 ]
 
@@ -26,6 +26,7 @@ export const navbarComp =`
         }
         </div>
         <div class="navbar-nav ms-auto">
+        <span id="cart-counter" class="navbar-text me-1"> (0) </span>
         ${
             navElementsRigth.map(e => {
                 return `
