@@ -1,20 +1,20 @@
 const url = 'http://127.0.0.1:5500/'
 
 const navElementsLeft = [
-    {title: 'Joyeria', link: `${url}joyeria.html`},
-    {title: 'Electronica', link: `${url}electronica.html`},
-    {title: 'Vestimenta', link: `${url}prendas.html`}
+    {title: 'Joyeria', link: `${url}pages/joyeria.html`},
+    {title: 'Electronica', link: `${url}pages/electronica.html`},
+    {title: 'Vestimenta', link: `${url}pages/prendas.html`}
 ]
 
 const navElementsRigth = [
-    {class: 'navbar-brand', title: 'Carro de compras', link: `${url}carrito.html`},
-    {class: 'nav-link', title: 'Log Out', link: `${url}login.html`}
+    {class: 'navbar-brand', title: 'Carro de compras', link: `${url}pages/carrito.html`},
+    {class: 'nav-link', title: 'Log Out', link: `${url}pages/login.html`}
 ]
 
 export const navbarComp =`
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="../index.html">Home</a>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav me-auto">
         ${

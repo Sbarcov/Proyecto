@@ -31,7 +31,7 @@ window.addEventListener('load', () => {
         actualizarCarro();
     }
     else {
-        window.location.href = './login.html';
+        window.location.href = './pages/login.html';
     }
 })
 

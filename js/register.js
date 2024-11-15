@@ -7,5 +7,5 @@ document.getElementById('registerForm').addEventListener('submit', function(even
 });
 
 document.getElementById('btnLogin').addEventListener('click', function() {
-    window.location.href = './login.html';
+    window.location.href = '../pages/login.html';
 });
