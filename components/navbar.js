@@ -26,7 +26,7 @@ export const navbarComp =`
         }
         </div>
         <div class="navbar-nav ms-auto">
-        <span id="cart-counter" class="navbar-text me-1"> (0) </span>
+        <span id="cart-counter" class="navbar-text me-1">  </span>
         ${
             navElementsRigth.map(e => {
                 return `

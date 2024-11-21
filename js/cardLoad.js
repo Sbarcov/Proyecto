@@ -1,9 +1,10 @@
 import { navbarComp } from "../components/navbar.js";
+import { footerComp } from "../components/footer.js";
 import { cardComponent } from "../components/card.js";
 import { getData, setData, updateCounter, removeElement} from "../components/localStorage.js";
 
 let navContainer = document.querySelector('header')
-
+let footerContainer = document.getElementById('footer')
 let cardContainer = document.getElementById('cardElement')
 let containerId = document.getElementsByClassName('container-sm')[0].id
 
@@ -20,7 +21,9 @@ window.addEventListener('load', () => {
 
         navContainer.innerHTML = navbarComp;
 
-        const cartCounter = getData('counter');
+        footerContainer.innerHTML = footerComp;
+
+        let cartCounter = getData('counter');
 
         const quantityDisplay = navContainer.querySelector('#cart-counter');
 
@@ -40,8 +43,11 @@ window.addEventListener('load', () => {
                 filteredItems = json.filter(e => e.category == containerId);
             }
 
+            let colCounter = 0;
+            let colDivider = '<div class="w-100"></div>';
+
             const cards = filteredItems.map(e => {
-                let counter = 0;
+                let counter = 0;              
                 const res = getData('itemsData');
 
                 for (let i = 0; i < res.length; i++) {
@@ -50,12 +56,22 @@ window.addEventListener('load', () => {
                         break;
                     }
                 }
+                
+                colCounter = colCounter + 1;
 
-                return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter)
+                if (colCounter == 3){
+                    colCounter = 0;
+                    return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter, colDivider)   
+                }
+                else{
+                    return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter, '')
+                }
+
             }).join('')
 
             cardContainer.innerHTML = cards
         })
+
     }
     else {
         window.location.href = '../pages/login.html';

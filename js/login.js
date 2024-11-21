@@ -1,6 +1,10 @@
+import { footerComp } from "../components/footer.js";
+
+let footerContainer = document.getElementById('footer')
+
 window.addEventListener('load', ()=>{
     sessionStorage.removeItem('userData');
-//    localStorage.clear();
+    footerContainer.innerHTML = footerComp;  
 })
 
 document.getElementById('btnRegistro').addEventListener('click', function() {

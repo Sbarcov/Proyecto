@@ -1,14 +1,20 @@
 import { navbarComp } from "../components/navbar.js";
+import { footerComp } from "../components/footer.js";
+import { modalComponent } from "../components/modal.js";
 import { getData, setData, deleteData, removeElement, updateCounter } from "../components/localStorage.js";
 
 let navContainer = document.querySelector('header')
+let footerContainer = document.getElementById('footer')
 
 let total = 0;
 let productosEnCarro = [];
+let cartModal;
 const productosContainer = document.getElementById('productos');
 const btnContainer = document.getElementById('btnContainer');
-const confirmarCompra = document.getElementById('btnConfirmar');
 const cancelarCompra = document.getElementById('btnCancelar');
+
+const modalContainer = document.getElementById('modalContainer');
+let confirmar = document.getElementById('btnConfirmar');
 
 const getUserData = (key) => {
     return JSON.parse(sessionStorage.getItem(key));
@@ -21,17 +27,14 @@ window.addEventListener('load', () => {
     if (userInfo) {
 
         navContainer.innerHTML = navbarComp;
-
-        const cartCounter = getData('counter');
-        const quantityDisplay = navContainer.querySelector('#cart-counter');
-        quantityDisplay.textContent = `(${cartCounter})`;
+        footerContainer.innerHTML = footerComp;        
 
         productosEnCarro = getData('itemsData')
 
         actualizarCarro();
     }
     else {
-        window.location.href = './pages/login.html';
+        window.location.href = './login.html';
     }
 })
 
@@ -53,23 +56,47 @@ productosContainer.addEventListener('click', event => {
     }
 });
 
-confirmarCompra.addEventListener('click', event => {
-
-    deleteData('itemsData');
-    setData('counter', 0)
-    window.alert("Gracias por su compra");
-    productosEnCarro = [];
-    actualizarCarro();
-
-});
 
 cancelarCompra.addEventListener('click', event => {
 
-    deleteData('itemsData');
-    setData('counter', 0)
-    window.alert("Compra cancelada");
-    productosEnCarro = [];
-    actualizarCarro();
+            deleteData('itemsData');
+            setData('counter', 0)
+            window.alert("Compra cancelada");
+            productosEnCarro = [];
+            actualizarCarro();
+});
+
+confirmar.addEventListener('click', () => {
+
+    total = 0
+
+    productosEnCarro.forEach( function(producto, index) {
+        total += (producto.price * producto.quantity);
+    });
+    
+    total = total.toFixed(2);
+    modalContainer.innerHTML = modalComponent(productosEnCarro, total);
+    cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+    cartModal.show();
+});
+
+modalContainer.addEventListener('click', event => {
+
+    const action = event.target.dataset.accion;
+
+    if (action) {
+        if (action === 'pagar') {
+            deleteData('itemsData');
+            setData('counter', 0)
+            window.alert("Gracias por su compra");
+            productosEnCarro = [];
+            actualizarCarro();
+            cartModal.hide();
+        }
+        else if (action === 'cerrar'){
+            cartModal.hide();
+        }
+    }
 
 });
 
@@ -86,9 +113,6 @@ function removerDelCarro(id) {
         setData('itemsData', productosEnCarro);
         let newCounter = updateCounter(productosEnCarro)
         setData('counter', newCounter);
-        const quantityDisplay = navContainer.querySelector('#cart-counter');
-        quantityDisplay.textContent = `(${newCounter})`;
-
     }
 }
 

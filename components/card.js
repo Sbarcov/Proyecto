@@ -1,6 +1,6 @@
-export const cardComponent = (img, title, desc, price, id, counter) => {
+export const cardComponent = (img, title, desc, price, id, counter, divider) => {
     return `
-    <div class="col">
+    <div class="col mt-3">
         <div class="card" style="width: 18rem;" id="${id}">
           <img src="${img}" class="tarjeta" alt="...">
             <div class="card-body">
@@ -24,5 +24,6 @@ export const cardComponent = (img, title, desc, price, id, counter) => {
             </div>
         </div>
     </div>
+    ${divider}
     `
 }
