@@ -1,10 +1,6 @@
 const url = 'http://127.0.0.1:5500/'
 
-const navElementsLeft = [
-    {title: 'Joyeria', link: `${url}pages/joyeria.html`},
-    {title: 'Electronica', link: `${url}pages/electronica.html`},
-    {title: 'Vestimenta', link: `${url}pages/prendas.html`}
-]
+const navElementsLeft = [{title: 'Categorias', link: `${url}pages/categorias.html`}]
 
 const navElementsRigth = [
     {class: 'navbar-brand', title: 'Carro de compras', link: `${url}pages/carrito.html`},

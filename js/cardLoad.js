@@ -7,6 +7,8 @@ let navContainer = document.querySelector('header')
 let footerContainer = document.getElementById('footer')
 let cardContainer = document.getElementById('cardElement')
 let containerId = document.getElementsByClassName('container-sm')[0].id
+const urlParams = new URLSearchParams(window.location.search);
+const category = urlParams.get('category');
 
 const getUserData = (key) => {
     return JSON.parse(sessionStorage.getItem(key));
@@ -39,37 +41,43 @@ window.addEventListener('load', () => {
                     filteredItems[i] = json[i * 2] // muestra multiples elementos de distintas categorias
                 }
             }
-            else {
-                filteredItems = json.filter(e => e.category == containerId);
+            else if (category != null){
+                filteredItems = json.filter(e => e.category == category);
             }
 
-            let colCounter = 0;
-            let colDivider = '<div class="w-100"></div>';
-
-            const cards = filteredItems.map(e => {
-                let counter = 0;              
-                const res = getData('itemsData');
-
-                for (let i = 0; i < res.length; i++) {
-                    if (res[i].id == e.id) {
-                        counter = res[i].quantity;
-                        break;
+            if(filteredItems.length != 0){
+                let colCounter = 0;
+                let colDivider = '<div class="w-100"></div>';
+    
+                const cards = filteredItems.map(e => {
+                    let counter = 0;              
+                    const res = getData('itemsData');
+    
+                    for (let i = 0; i < res.length; i++) {
+                        if (res[i].id == e.id) {
+                            counter = res[i].quantity;
+                            break;
+                        }
                     }
-                }
-                
-                colCounter = colCounter + 1;
-
-                if (colCounter == 3){
-                    colCounter = 0;
-                    return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter, colDivider)   
-                }
-                else{
-                    return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter, '')
-                }
-
-            }).join('')
-
-            cardContainer.innerHTML = cards
+                    
+                    colCounter = colCounter + 1;
+    
+                    if (colCounter == 3){
+                        colCounter = 0;
+                        return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter, colDivider)   
+                    }
+                    else{
+                        return cardContainer.innerHTML = cardComponent(e.image, e.title, e.description, e.price, e.id, counter, '')
+                    }
+    
+                }).join('')
+    
+                cardContainer.innerHTML = cards
+            }
+            else{
+                alert('Categoria no encontrada!');
+                window.location.href = '../pages/categorias.html';
+            }
         })
 
     }
