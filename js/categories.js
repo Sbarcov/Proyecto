@@ -29,6 +29,7 @@ window.addEventListener('load', () => {
         quantityDisplay.textContent = `(${cartCounter})`;
 
         fetch('https://fakestoreapi.com/products/categories').then(res => res.json()).then(json => {
+        //fetch('../data/categoryTest.json').then(res => res.json()).then(json => {
 
             let colCounter = 0;
             let colDivider = '<div class="w-100"></div>';

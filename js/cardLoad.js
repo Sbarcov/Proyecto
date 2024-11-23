@@ -32,6 +32,7 @@ window.addEventListener('load', () => {
         quantityDisplay.textContent = `(${cartCounter})`;
 
         fetch('https://fakestoreapi.com/products').then(res => res.json()).then(json => {
+        //fetch('../data/productTest.json').then(res => res.json()).then(json => {  
 
             let filteredItems = []
 
